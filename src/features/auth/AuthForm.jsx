@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 /** Authform allows user to login OR register
  *
  */
-function Authform() {
+function AuthForm() {
   const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(true);

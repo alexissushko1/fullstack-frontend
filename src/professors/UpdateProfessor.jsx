@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAddProfessorMutation } from "./professorSlice";
 import { useState } from "react";
 
-export default function ProfessorForm() {
+export default function UpdateProfessorForm() {
   const [formData, setFormData] = useState({
     name: "",
     bio: "",
@@ -13,12 +13,13 @@ export default function ProfessorForm() {
   });
 
   const navigate = useNavigate();
-  const [addProfessor] = useAddProfessorMutation();
-  async function postProfessor(event) {
+
+  const [updateProfessor] = useUpdateProfessorMutation();
+  async function updateProfessor(event) {
     event.preventDefault();
 
     try {
-      const professor = await addProfessor({
+      const professor = await updateProfessor({
         ...formData,
       }).unwrap();
       navigate(`/professors/${professor.id}`);
@@ -28,8 +29,8 @@ export default function ProfessorForm() {
   }
 
   return (
-    <form onSubmit={postProfessor}>
-      <h2>Add a Professor</h2>
+    <form onSubmit={updateProfessor}>
+      <h2>Update a Professor</h2>
       <label>
         Name
         <input
@@ -88,7 +89,7 @@ export default function ProfessorForm() {
           }
         />
       </label>
-      <button>Add Professor</button>
+      <button>Update Professor</button>
     </form>
   );
 }

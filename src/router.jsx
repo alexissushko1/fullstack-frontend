@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import { Root } from "./layout/Root";
 import ProfessorList from "./professors/ProfessorList";
 import ProfessorDetails from "./professors/ProfessorDetails";
-import ProfessorForm from "./professors/ProfessorForm";
+import AddProfessorForm from "./professors/AddProfessor";
+import UpdateProfessorForm from "./professors/AddProfessor";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/professors/new",
-        element: <ProfessorForm />,
+        element: <AddProfessorForm />,
+      },
+      {
+        path: "/professors/change",
+        element: <UpdateProfessorForm />,
       },
     ],
   },

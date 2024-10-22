@@ -1,17 +1,14 @@
 import { useState } from "react";
-import {
-  useAddDepartmentMutation,
-  useUpdateDepartmentMutation,
-} from "./departmentSlice";
+import { useAddDepartmentMutation } from "./departmentSlice";
 
-export default function DepartmentForm() {
+export default function DepartmentForm({}) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [departmentEmail, setDepartmentEmail] = useState("");
   const [departmentPhone, setDepartmentPhone] = useState("");
 
-  const [addDepartment, { isLoading, error }] = useUpdateDepartmentMutation();
+  const [addDepartment, { isLoading, error }] = useAddDepartmentMutation();
 
   function postDepartment(event) {
     event.preventDefault();

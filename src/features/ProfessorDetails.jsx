@@ -1,4 +1,8 @@
-import { useGetProfessorQuery } from "./professorSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  useDeleteProfessorMutation,
+  useGetProfessorQuery,
+} from "./professorSlice";
 
 export default function ProfessorDetails() {
   const { professorId } = useParams();
@@ -7,6 +11,18 @@ export default function ProfessorDetails() {
     isLoading,
     error,
   } = useGetProfessorQuery(professorId);
+
+  const navigate = useNavigate();
+
+  const [deleteProfessor] = useDeleteProfessorMutation();
+  async function removeProfessor() {
+    try {
+      await deleteProfessor(professor.id);
+      navigate("/");
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   if (isLoading) return <p>Loading professor...</p>;
 
@@ -19,7 +35,8 @@ export default function ProfessorDetails() {
       <p>{professor.profileImage}</p>
       <p>{professor.email}</p>
       <p>{professor.phone}</p>
-      <p>{professor.departmentId}</p>
+      <p>{professor.department}</p>
+      <button onClick={removeProfessor}>Delete Professor</button>
     </>
   );
 }

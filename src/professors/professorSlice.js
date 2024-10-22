@@ -25,8 +25,8 @@ const professorApi = api.injectEndpoints({
       invalidatesTags: ["Professor"],
     }),
     updateProfessor: build.mutation({
-      query: (professor) => ({
-        url: "/professors",
+      query: (id) => ({
+        url: "/professors" + id,
         method: "PUT",
         body: professor,
       }),

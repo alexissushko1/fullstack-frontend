@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useLoginMutation, useRegisterMutation } from "./authSlice";
+import { useNavigate } from "react-router-dom";
 
 /** Authform allows user to login OR register
  *
  */
 function Authform() {
+  const navigate = useNavigate();
+
   const [isLogin, setIsLogin] = useState(true);
   const authAction = isLogin ? "Login" : "Register";
   const altCopy = isLogin
@@ -25,6 +28,7 @@ function Authform() {
 
     try {
       await authMethod(credentials).unwrap();
+      navigate("/");
     } catch (error) {
       console.error(error);
     }

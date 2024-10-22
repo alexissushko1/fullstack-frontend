@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoginMutation, useRegisterMutation } from "../authSlice";
+import { useLoginMutation, useRegisterMutation } from "./authSlice";
 
 /** Authform allows user to login OR register
  *

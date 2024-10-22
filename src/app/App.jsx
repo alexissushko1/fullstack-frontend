@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function App() {
+export default function App() {
   const [token, setToken] = useState(null);
 
   return <></>;

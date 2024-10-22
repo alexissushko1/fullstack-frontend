@@ -15,11 +15,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/professors/:professorId",
-        element: "<ProfessorDetails />",
+        element: <ProfessorDetails />,
       },
       {
         path: "/professors/new",
-        element: "<ProfessorForm>",
+        element: <ProfessorForm />,
       },
     ],
   },

@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 /** Authform allows user to login OR register
  *
  */
-function Authform() {
-  const navigate = useNavigate();
+function AuthForm() {
+  //const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(true);
   const authAction = isLogin ? "Login" : "Register";
@@ -28,7 +28,7 @@ function Authform() {
 
     try {
       await authMethod(credentials).unwrap();
-      navigate("/");
+      /*navigate("/");*/
     } catch (error) {
       console.error(error);
     }

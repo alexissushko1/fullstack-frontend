@@ -3,6 +3,8 @@ import {
   useDeleteProfessorMutation,
   useGetProfessorQuery,
 } from "./professorSlice";
+import "./professors.css";
+import UpdateProfessorForm from "./UpdateProfessor";
 
 export default function ProfessorDetails() {
   const { professorId } = useParams();
@@ -30,13 +32,20 @@ export default function ProfessorDetails() {
 
   return (
     <>
-      <h1>{professor.name}</h1>
-      <p>{professor.bio}</p>
-      <p>{professor.profileImage}</p>
-      <p>{professor.email}</p>
-      <p>{professor.phone}</p>
-      <p>{professor.departmentId}</p>
-      <button onClick={removeProfessor}>Delete Professor</button>
+      <div className="ProfDetail">
+        <div className="ProfessorDetail">
+          <h1>{professor.name}</h1>
+          <p>{professor.bio}</p>
+          <p>{professor.profileImage}</p>
+          <p>{professor.email}</p>
+          <p>{professor.phone}</p>
+          <p>{professor.departmentId}</p>
+          <button onClick={removeProfessor}>Delete Professor</button>
+        </div>
+        <div className="UpdateProfessor">
+          <UpdateProfessorForm />
+        </div>
+      </div>
     </>
   );
 }

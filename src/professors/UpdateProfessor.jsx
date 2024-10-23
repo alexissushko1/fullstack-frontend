@@ -15,7 +15,7 @@ export default function UpdateProfessorForm() {
   const navigate = useNavigate();
 
   const [updateProfessor] = useUpdateProfessorMutation();
-  async function updateProfessor(event) {
+  async function changeProfessor(event) {
     event.preventDefault();
 
     try {
@@ -29,7 +29,7 @@ export default function UpdateProfessorForm() {
   }
 
   return (
-    <form onSubmit={updateProfessor}>
+    <form onSubmit={changeProfessor}>
       <h2>Update a Professor</h2>
       <label>
         Name

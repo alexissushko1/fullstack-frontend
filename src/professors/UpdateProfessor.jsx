@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAddProfessorMutation } from "./professorSlice";
+import { useUpdateProfessorMutation } from "./professorSlice";
 import { useState } from "react";
 
 export default function UpdateProfessorForm() {

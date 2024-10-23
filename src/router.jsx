@@ -12,8 +12,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
+      { index: true, element: <HomePage /> },
+      { path: "/departments", element: <DepartmentList /> },
       {
-        path: "/",
+        path: "/professors",
         element: <ProfessorList />,
       },
       {
@@ -28,10 +30,6 @@ const router = createBrowserRouter([
         path: "/professors/change",
         element: <UpdateProfessorForm />,
       },
-    ],
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: "/departments", element: <DepartmentList /> },
     ],
   },
 ]);

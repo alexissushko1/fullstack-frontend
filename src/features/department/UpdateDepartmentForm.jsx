@@ -1,37 +1,14 @@
 import { useState } from "react";
-import { useAddDepartmentMutation } from "./departmentSlice";
+import { useUpdateDepartmentMutation } from "./departmentSlice";
 
-export default function DepartmentForm() {
+export default function UpdateDepartmentForm({}) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("https://loremflickr.com/200/300/dog");
-  const [departmentEmail, setDepartmentEmail] = useState("");
-  const [departmentPhone, setDepartmentPhone] = useState("");
-  //const [professorIds, setProfessorIds] = useState("");
 
-  const [addDepartment, { isLoading: isAdding, error: addingError }] =
-    useAddDepartmentMutation();
+  const [updateDepartment, { isLoading: isUpdating, error: updatingError }] =
+    useUpdateDepartmentMutation();
 
-  const postDepartment = async (event) => {
-    event.preventDefault();
-    const departmentData = {
-      name,
-      description,
-      image,
-      departmentEmail,
-      departmentPhone,
-      professorIds: [1],
-    };
-
-    console.log("Posting department data:", departmentData);
-    try {
-      const response = await addDepartment(departmentData).unwrap();
-      console.log("Department added:", response);
-    } catch (e) {
-      console.error("Failed to add department:", e);
-    }
-  };
-  /*
   const putDepartment = async (event) => {
     event.preventDefault();
     const updatedDepartmentData = {
@@ -48,7 +25,6 @@ export default function DepartmentForm() {
       console.error("Failed to update department", e);
     }
   };
-  */
 
   return (
     <>
@@ -95,9 +71,9 @@ export default function DepartmentForm() {
           />
         </label>
 
-        <button type="submit">Add Department</button>
-        {isAdding && <output>Uploading department information...</output>}
-        {addingError && <output>{addingError.message}</output>}
+        <button type="submit">Update Department</button>
+        {isUpdating && <output>Uploading department information...</output>}
+        {updatingError && <output>{updatingError.message}</output>}
       </form>
     </>
   );

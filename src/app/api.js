@@ -10,6 +10,7 @@ const api = createApi({
     },
   }),
   endpoints: () => ({}),
+  tagTypes: ["Department", "Professor", "Auth"],
 });
 
 export default api;

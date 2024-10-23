@@ -29,9 +29,6 @@ function Navbar() {
         <li>
           <NavLink to="/professors">Professors</NavLink>
         </li>
-        <li>
-          <NavLink to="/departments/new">Department Form</NavLink>
-        </li>
 
         {token ? (
           <>

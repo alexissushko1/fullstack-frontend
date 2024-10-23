@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import AuthForm from "./features/auth/AuthForm";
 import Root from "./layout/Root";
-import ProfessorList from "./professors/ProfessorList";
-import ProfessorDetails from "./professors/ProfessorDetails";
-import AddProfessorForm from "./professors/AddProfessor";
-import UpdateProfessorForm from "./professors/AddProfessor";
+import ProfessorList from "./features/professors/ProfessorList";
+import ProfessorDetails from "./features/professors/ProfessorDetails";
+import AddProfessorForm from "./features/professors/AddProfessor";
+import UpdateProfessorForm from "./features/professors/AddProfessor";
 import DepartmentList from "./features/department/DepartmentList";
 import DepartmentDetails from "./features/department/DepartmentDetails";
 import DepartmentForm from "./features/department/DepartmentForm";
+
 import Login from "./features/auth/AuthForm";
 
 import HomePage from "./features/HomePage";

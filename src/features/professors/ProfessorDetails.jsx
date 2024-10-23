@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   useDeleteProfessorMutation,
   useGetProfessorQuery,
 } from "./professorSlice";
 import "./professors.css";
 import UpdateProfessorForm from "./UpdateProfessor";
-import { selectToken } from "../auth/authSlice";
 
 export default function ProfessorDetails() {
   const { professorId } = useParams();
@@ -15,7 +15,7 @@ export default function ProfessorDetails() {
     error,
   } = useGetProfessorQuery(professorId);
 
-  const token = useSelector(selectToken);
+  const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
 
   const [deleteProfessor] = useDeleteProfessorMutation();

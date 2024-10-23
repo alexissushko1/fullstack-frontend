@@ -5,3 +5,7 @@
 .ProfDetail {
   display: flex;
 }
+
+.ProfessorDetail {
+  margin: 0.5em;
+}

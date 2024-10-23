@@ -67,6 +67,7 @@ export default function DepartmentForm({}) {
             onChange={(e) => setDepartmentPhone(e.target.value)}
           />
         </label>
+        <button>Add</button>
         {isLoading && <output>Uploading department information...</output>}
         {error && <output>{error.message}</output>}
       </form>

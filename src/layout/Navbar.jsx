@@ -1,7 +1,8 @@
 //Add import statements
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-//import { logout } from "../features/auth/authSlice";
+//import { logout } from "../features/auth/authApi";
+import "./NavBar.scss";
 
 //Add Navbar function
 function Navbar() {
@@ -18,7 +19,6 @@ function Navbar() {
   //Navbar links to Home, Departments Page, Professors Page, and Form to add or Delete a Department
   return (
     <nav>
-      <h1>Full Stack Academy</h1>
       <menu>
         <li>
           <NavLink to="/">Home</NavLink>
@@ -32,7 +32,9 @@ function Navbar() {
         <li>
           <NavLink to="/departments">Department Form</NavLink>
         </li>
-
+        <li>
+          <NavLink to="/users/login">Log In</NavLink>
+        </li>
         {/*token ? (
           <>
             <li>
@@ -45,7 +47,7 @@ function Navbar() {
           <li>
             <NavLink to="/login">Log In</NavLink>
           </li>
-        )*/}
+        ) */}
       </menu>
     </nav>
   );

@@ -1,5 +1,10 @@
-nav {
+.footer {
+  background-color: tan;
+  height: 5em;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  p {
+    text-align: center;
+  }
 }

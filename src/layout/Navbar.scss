@@ -1,5 +1,40 @@
+* {
+  margin: 0;
+}
+
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-direction: row;
+  margin: 0 auto;
+  background-color: tan;
+  border: 1px solid black;
+  menu {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    li {
+      display: inline-block;
+      margin: 1em;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+      background-color: tan;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    a:visited {
+      text-decoration: none;
+    }
+  }
+}
+
+@media screen and (min-width: 400px) {
+  nav .logo span {
+    display: block;
+  }
 }

@@ -49,5 +49,6 @@ export const {
   useGetProfessorsQuery,
   useGetProfessorQuery,
   useAddProfessorMutation,
+  useUpdateProfessorMutation,
   useDeleteProfessorMutation,
 } = professorApi;

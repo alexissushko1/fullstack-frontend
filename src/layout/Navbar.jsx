@@ -1,7 +1,7 @@
 //Add import statements
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-//import { logout } from "../features/auth/authApi";
+import { logout } from "../features/auth/authSlice";
 import "./NavBar.scss";
 
 //Add Navbar function
@@ -9,7 +9,7 @@ function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const token = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state.auth.token);
 
   const attemptLogout = async () => {
     await dispatch(logout());
@@ -30,12 +30,10 @@ function Navbar() {
           <NavLink to="/professors">Professors</NavLink>
         </li>
         <li>
-          <NavLink to="/departments">Department Form</NavLink>
+          <NavLink to="/departments/new">Department Form</NavLink>
         </li>
-        <li>
-          <NavLink to="/users/login">Log In</NavLink>
-        </li>
-        {/*token ? (
+
+        {token ? (
           <>
             <li>
               <a href="#" onClick={attemptLogout}>
@@ -45,9 +43,9 @@ function Navbar() {
           </>
         ) : (
           <li>
-            <NavLink to="/login">Log In</NavLink>
+            <NavLink to="/users/login">Log In</NavLink>
           </li>
-        ) */}
+        )}
       </menu>
     </nav>
   );

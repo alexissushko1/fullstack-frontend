@@ -1,13 +1,4 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import AuthForm from "../features/auth/AuthForm";
-
-function App() {
-  //const [token, setToken] = useState(null);
-  const token = useSelector((state) => state.auth.token);
-
-  return token ? <h1>Home</h1> : <AuthForm />;
-
+function HomePage() {
   return (
     <>
       <h1>Full Stack University</h1>
@@ -32,7 +23,6 @@ function App() {
       </p>
     </>
   );
-
 }
 
-export default App;
+export default HomePage;

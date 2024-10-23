@@ -43,7 +43,7 @@ const departmentApi = api.injectEndpoints({
           professorIds,
         },
       }),
-      invalidatesTags: [{ type: "Department", id: "LIST" }],
+      invalidatesTags: ["Department"],
       transformResponse: (response) => response.newDepartment,
       transformErrorResponse: (response) => response.data.error,
     }),

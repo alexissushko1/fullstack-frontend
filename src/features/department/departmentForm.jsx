@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAddDepartmentMutation } from "./departmentSlice";
 
-export default function DepartmentForm({}) {
+export default function DepartmentForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("https://loremflickr.com/200/300/dog");
@@ -20,17 +20,18 @@ export default function DepartmentForm({}) {
       image,
       departmentEmail,
       departmentPhone,
-      professorIds: [1, 2, 3],
+      professorIds: [1],
     };
 
     console.log("Posting department data:", departmentData);
     try {
       const response = await addDepartment(departmentData).unwrap();
+      console.log("Department added:", response);
     } catch (e) {
       console.error("Failed to add department:", e);
     }
   };
-
+  /*
   const putDepartment = async (event) => {
     event.preventDefault();
     const updatedDepartmentData = {
@@ -47,6 +48,7 @@ export default function DepartmentForm({}) {
       console.error("Failed to update department", e);
     }
   };
+  */
 
   return (
     <>

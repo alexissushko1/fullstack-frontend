@@ -1,7 +1,7 @@
 //Add import statements
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-//import { logout } from "../features/auth/authApi";
+import { logout } from "../features/auth/authSlice";
 import "./NavBar.scss";
 
 //Add Navbar function

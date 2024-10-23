@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import AuthForm from "../features/auth/AuthForm";
 
-function App() {
+
+export default function App() {
   const [token, setToken] = useState(null);
 
   return (
@@ -27,6 +30,5 @@ function App() {
       </p>
     </>
   );
-}
 
-export default App;
+}

@@ -35,7 +35,7 @@ export default function ProfessorDetails() {
       <p>{professor.profileImage}</p>
       <p>{professor.email}</p>
       <p>{professor.phone}</p>
-      <p>{professor.department}</p>
+      <p>{professor.departmentId}</p>
       <button onClick={removeProfessor}>Delete Professor</button>
     </>
   );

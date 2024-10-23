@@ -8,3 +8,5 @@ function App() {
 
   return token ? <h1>Home</h1> : <AuthForm />;
 }
+
+export default App;

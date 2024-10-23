@@ -4,13 +4,13 @@ import api from "../../app/api";
 /** API endpoints */
 const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    me: builder.query({
-      query: "users/me",
+    /*me: builder.query({
+      query: "me",
       providesTags: ["Me"],
-    }),
+    }),*/
     register: builder.mutation({
       query: (credentials) => ({
-        url: "users/register",
+        url: "register",
         method: "POST",
         body: credentials,
       }),
@@ -18,7 +18,7 @@ const authApi = api.injectEndpoints({
     }),
     login: builder.mutation({
       query: (credentials) => ({
-        url: "users/login",
+        url: "login",
         method: "POST",
         body: credentials,
       }),

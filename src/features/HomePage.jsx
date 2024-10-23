@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-export default function App() {
-  const [token, setToken] = useState(null);
-
+function HomePage() {
   return (
     <>
       <h1>Full Stack University</h1>
@@ -29,4 +25,4 @@ export default function App() {
   );
 }
 
-export default App;
+export default HomePage;

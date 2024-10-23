@@ -14,7 +14,6 @@ const authApi = api.injectEndpoints({
         method: "POST",
         body: credentials,
       }),
-      invalidatesTags: ["Me"],
     }),
     login: builder.mutation({
       query: (credentials) => ({
@@ -22,7 +21,6 @@ const authApi = api.injectEndpoints({
         method: "POST",
         body: credentials,
       }),
-      invalidatesTags: ["Me"],
     }),
   }),
 });

@@ -27,7 +27,7 @@ function Navbar() {
           <NavLink to="/departments">Departments</NavLink>
         </li>
         <li>
-          <NavLink to="/professors">Bio</NavLink>
+          <NavLink to="/professors">Professors</NavLink>
         </li>
         <li>
           <NavLink to="/departments/new">Department Form</NavLink>

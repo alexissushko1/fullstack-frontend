@@ -3,7 +3,8 @@ import {
   useDeleteDepartmentMutation,
   useGetDepartmentQuery,
 } from "./departmentSlice";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function DepartmentDetails(/*{
   selectedDepartmentId,
@@ -15,6 +16,7 @@ export default function DepartmentDetails(/*{
 
   const [deleteDepartment] = useDeleteDepartmentMutation();
   const token = useSelector((state) => state.auth.token);
+  const [deleted, setDeleted] = useState(false);
 
   const removeDepartment = async (id) => {
     if (!token) {
@@ -23,15 +25,20 @@ export default function DepartmentDetails(/*{
     }
     if (!department) {
       console.log("No department found");
+      return;
     }
     //setSelectedDepartmentId();
     try {
       await deleteDepartment(id).unwrap();
-      Navigate("/departments");
+      setDeleted(true);
     } catch (e) {
       console.error("Failed to delete department:", e);
     }
   };
+
+  if (deleted) {
+    return <Navigate to="/departments" />;
+  }
 
   let $details;
 

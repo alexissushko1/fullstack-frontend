@@ -6,6 +6,7 @@ import DepartmentForm from "./features/department/DepartmentForm";
 import Login from "./features/auth/AuthForm";
 
 import HomePage from "./features/HomePage";
+import UpdateDepartmentForm from "./features/department/UpdateDepartmentForm";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "/departments", element: <DepartmentList /> },
       { path: "/departments/:id", element: <DepartmentDetails /> },
       { path: "/departments/new", element: <DepartmentForm /> },
+      { path: "/departments/updated", element: <UpdateDepartmentForm /> },
       { path: "/users/login", element: <Login /> },
     ],
   },

@@ -7,7 +7,7 @@ import AddProfessorForm from "./features/professors/AddProfessor";
 import UpdateProfessorForm from "./features/professors/AddProfessor";
 import DepartmentList from "./features/department/DepartmentList";
 import DepartmentDetails from "./features/department/DepartmentDetails";
-import DepartmentForm from "./features/department/DepartmentForm";
+import DepartmentForm from "./features/department/departmentForm";
 
 import Login from "./features/auth/AuthForm";
 

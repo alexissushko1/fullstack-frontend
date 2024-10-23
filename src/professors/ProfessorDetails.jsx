@@ -17,7 +17,16 @@ export default function ProfessorDetails() {
   const navigate = useNavigate();
 
   const [deleteProfessor] = useDeleteProfessorMutation();
+  const token = useSelector((state) => state.auth.token);
   async function removeProfessor() {
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
+    if (!professor) {
+      console.log("No professor found");
+      return;
+    }
     try {
       await deleteProfessor(professor.id);
       navigate("/");

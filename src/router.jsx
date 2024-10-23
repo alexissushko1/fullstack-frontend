@@ -1,6 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./layout/Root";
 import DepartmentList from "./features/department/DepartmentList";
+import DepartmentDetails from "./features/department/DepartmentDetails";
+import DepartmentForm from "./features/department/DepartmentForm";
+//import AuthForm from "./features/auth/AuthForm";
+
 import HomePage from "./features/HomePage";
 
 const router = createBrowserRouter([
@@ -10,6 +14,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/departments", element: <DepartmentList /> },
+      { path: "/departments/:id", element: <DepartmentDetails /> },
+      { path: "/departments/new", element: <DepartmentForm /> },
     ],
   },
 ]);

@@ -14,13 +14,13 @@ const departmentApi = api.injectEndpoints({
     getDepartments: build.query({
       query: () => "departments",
       providesTags: ["Department"],
-      transformResponse: (response) => response.data.departments,
+      transformResponse: (response) => response,
       transformErrorResponse: (response) => response.data.error,
     }),
     getDepartment: build.query({
       query: (id) => "departments/" + id,
       providesTags: ["Department"],
-      transformResponse: (response) => response.data.department,
+      transformResponse: (response) => response,
       transformErrorResponse: (response) => response.data.error,
     }),
     addDepartment: build.mutation({
@@ -30,7 +30,7 @@ const departmentApi = api.injectEndpoints({
         body: department,
       }),
       invalidatesTags: ["Department"],
-      transformResponse: (response) => response.data.newDepartment,
+      transformResponse: (response) => response.newDepartment,
       transformErrorResponse: (response) => response.data.error,
     }),
     updateDepartment: build.mutation({
@@ -40,7 +40,7 @@ const departmentApi = api.injectEndpoints({
         body: department,
       }),
       invalidatesTags: ["Department"],
-      transformResponse: (response) => response.data.updatedDepartment,
+      transformResponse: (response) => response.updatedDepartment,
       transformErrorResponse: (response) => response.data.error,
     }),
     deleteDepartment: build.mutation({

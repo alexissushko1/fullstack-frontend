@@ -30,7 +30,7 @@ function Navbar() {
           <NavLink to="/professors">Bio</NavLink>
         </li>
         <li>
-          <NavLink to="/departments">Department Form</NavLink>
+          <NavLink to="/departments/new">Department Form</NavLink>
         </li>
         <li>
           <NavLink to="/users/login">Log In</NavLink>

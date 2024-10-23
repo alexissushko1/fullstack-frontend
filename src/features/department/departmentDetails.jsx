@@ -1,21 +1,33 @@
+import { useSelector } from "react-redux";
 import {
   useDeleteDepartmentMutation,
   useGetDepartmentQuery,
 } from "./departmentSlice";
+import { useParams } from "react-router-dom";
 
-export default function DepartmentDetails({
+export default function DepartmentDetails(/*{
   selectedDepartmentId,
   setSelectedDepartmentId,
-}) {
+}*/) {
+  const { id: selectedDepartmentId } = useParams();
   const { data: department, isLoading } =
     useGetDepartmentQuery(selectedDepartmentId);
 
   const [deleteDepartment] = useDeleteDepartmentMutation();
+  const token = useSelector((state) => state.auth.token);
 
-  function removeDepartment(id) {
-    setSelectedDepartmentId();
-    deleteDepartment(id);
-  }
+  const removeDepartment = async (id) => {
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
+    //setSelectedDepartmentId();
+    try {
+      await deleteDepartment(id).unwrap();
+    } catch (e) {
+      console.error("Failed to delete department:", error);
+    }
+  };
 
   let $details;
 
@@ -26,9 +38,9 @@ export default function DepartmentDetails({
   } else {
     $details = (
       <>
-        <h2>
+        <h3>
           {department.name} #{department.id}
-        </h2>
+        </h3>
         <p>{department.description}</p>
         <h3>{department.image}</h3>
         <h4>{department.email}</h4>
@@ -42,7 +54,7 @@ export default function DepartmentDetails({
 
   return (
     <main>
-      <h2>Professor</h2>
+      <h2>Department Details</h2>
       {$details}
     </main>
   );

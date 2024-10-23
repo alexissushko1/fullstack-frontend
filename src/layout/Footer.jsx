@@ -4,7 +4,7 @@ import "./Footer.scss";
 function Footer() {
   return (
     <>
-      <div class="footer">
+      <div className="footer">
         <p>Email: hello@fullstackacademy.com</p>
         <p>Address: 249 Smith Street PMB 3004 Brooklyn, NY 11231</p>
       </div>

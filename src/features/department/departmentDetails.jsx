@@ -5,6 +5,8 @@ import {
 } from "./departmentSlice";
 import { useParams, Navigate } from "react-router-dom";
 import { useState } from "react";
+import UpdateDepartmentForm from "./UpdateDepartmentForm";
+import "./departmentDetails.css";
 
 export default function DepartmentDetails(/*{
   selectedDepartmentId,
@@ -49,16 +51,23 @@ export default function DepartmentDetails(/*{
   } else {
     $details = (
       <>
-        <h3>
-          {department.name} #{department.id}
-        </h3>
-        <p>{department.description}</p>
-        <h3>{department.image}</h3>
-        <h4>{department.email}</h4>
-        <h4>{department.phone}</h4>
-        <button onClick={() => removeDepartment(department.id)}>
-          Remove Department
-        </button>
+        <div className="departmentDetailsGroup">
+          <div className="departmentDetails">
+            <h3>
+              {department.name} #{department.id}
+            </h3>
+            <p>{department.description}</p>
+            <h3>{department.image}</h3>
+            <h4>{department.email}</h4>
+            <h4>{department.phone}</h4>
+            <button onClick={() => removeDepartment(department.id)}>
+              Remove Department
+            </button>
+          </div>
+          <div className="departmentUpdateForm">
+            <UpdateDepartmentForm />
+          </div>
+        </div>
       </>
     );
   }

@@ -12,7 +12,7 @@ export default function UpdateDepartmentForm({}) {
   const putDepartment = async (event) => {
     event.preventDefault();
     const updatedDepartmentData = {
-      id: departmentEmail.id,
+      //id: department.id,
       name,
       description,
       image,
@@ -29,7 +29,7 @@ export default function UpdateDepartmentForm({}) {
   return (
     <>
       <h2>Add a Department</h2>
-      <form onSubmit={postDepartment}>
+      <form onSubmit={putDepartment}>
         <label>
           Name
           <input
@@ -52,22 +52,6 @@ export default function UpdateDepartmentForm({}) {
             name="image"
             value={image}
             onChange={(e) => setImage(e.target.value)}
-          />
-        </label>
-        <label>
-          Department Email
-          <input
-            name="departmentEmail"
-            value={departmentEmail}
-            onChange={(e) => setDepartmentEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          Department Phone
-          <input
-            name="departmentPhone"
-            value={departmentPhone}
-            onChange={(e) => setDepartmentPhone(e.target.value)}
           />
         </label>
 

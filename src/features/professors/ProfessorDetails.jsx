@@ -5,6 +5,7 @@ import {
 } from "./professorSlice";
 import "./professors.css";
 import UpdateProfessorForm from "./UpdateProfessor";
+import { selectToken } from "../auth/authSlice";
 
 export default function ProfessorDetails() {
   const { professorId } = useParams();
@@ -14,10 +15,11 @@ export default function ProfessorDetails() {
     error,
   } = useGetProfessorQuery(professorId);
 
+  const token = useSelector(selectToken);
   const navigate = useNavigate();
 
   const [deleteProfessor] = useDeleteProfessorMutation();
-  const token = useSelector((state) => state.auth.token);
+
   async function removeProfessor() {
     if (!token) {
       console.error("No token found");

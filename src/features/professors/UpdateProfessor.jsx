@@ -14,15 +14,16 @@ export default function UpdateProfessorForm() {
 
   const navigate = useNavigate();
 
-  const [updateProfessor] = useUpdateProfessorMutation();
+  // useUpdateProfessorMutation();
   async function changeProfessor(event) {
     event.preventDefault();
-
+    if (isLoading) {
+      return "Loading...";
+    }
     try {
-      const professor = await updateProfessor({
-        ...formData,
-      }).unwrap();
-      navigate(`/professors/${professor.id}`);
+      const professor = await useUpdateProfessorMutation(formData);
+      console.log(professor);
+      navigate(`/professors/${formData.id}`);
     } catch (e) {
       console.error(e);
     }
@@ -36,8 +37,8 @@ export default function UpdateProfessorForm() {
         <input
           type="text"
           name="name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          // value={formData.name}
+          onChange={(e) => setFormData({ name: e.target.value })}
         />
       </label>
       <label>
@@ -46,7 +47,7 @@ export default function UpdateProfessorForm() {
           type="text"
           name="bio"
           value={formData.bio}
-          onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+          onChange={(e) => setFormData({ bio: e.target.value })}
         />
       </label>
       <label>
@@ -55,9 +56,7 @@ export default function UpdateProfessorForm() {
           type="text"
           name="profileImage"
           value={formData.profileImage}
-          onChange={(e) =>
-            setFormData({ ...formData, profileImage: e.target.value })
-          }
+          onChange={(e) => setFormData({ profileImage: e.target.value })}
         />
       </label>
       <label>
@@ -66,7 +65,7 @@ export default function UpdateProfessorForm() {
           type="text"
           name="email"
           value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          onChange={(e) => setFormData({ email: e.target.value })}
         />
       </label>
       <label>
@@ -75,7 +74,7 @@ export default function UpdateProfessorForm() {
           type="text"
           name="phone"
           value={formData.phone}
-          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+          onChange={(e) => setFormData({ phone: e.target.value })}
         />
       </label>
       <label>
@@ -84,9 +83,7 @@ export default function UpdateProfessorForm() {
           type="int"
           name="departmentId"
           value={formData.departmentId}
-          onChange={(e) =>
-            setFormData({ ...formData, departmentId: e.target.value })
-          }
+          onChange={(e) => setFormData({ departmentId: e.target.value })}
         />
       </label>
       <button>Update Professor</button>

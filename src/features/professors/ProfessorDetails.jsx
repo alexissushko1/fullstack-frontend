@@ -6,6 +6,7 @@ import {
 } from "./professorSlice";
 import "./professors.css";
 import UpdateProfessorForm from "./UpdateProfessor";
+import { useState } from "react";
 
 export default function ProfessorDetails() {
   const { professorId } = useParams();
@@ -17,8 +18,8 @@ export default function ProfessorDetails() {
 
   const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
-
   const [deleteProfessor] = useDeleteProfessorMutation();
+  const [deleted, setDeleted] = useState(false);
 
   async function removeProfessor() {
     if (!token) {
@@ -31,10 +32,14 @@ export default function ProfessorDetails() {
     }
     try {
       await deleteProfessor(professor.id);
-      navigate("/");
+      navigate("/professors");
     } catch (e) {
       console.error(e);
     }
+  }
+
+  if (deleted) {
+    return <Navigate to="/professors" />;
   }
 
   if (isLoading) return <p>Loading professor...</p>;
@@ -46,11 +51,11 @@ export default function ProfessorDetails() {
       <div className="ProfDetail">
         <div className="ProfessorDetail">
           <h1>{professor.name}</h1>
-          <p>{professor.bio}</p>
-          <p>{professor.profileImage}</p>
-          <p>{professor.email}</p>
-          <p>{professor.phone}</p>
-          <p>{professor.departmentId}</p>
+          <p>Bio:{professor.bio}</p>
+          <p>Image:{professor.profileImage}</p>
+          <p>Email:{professor.email}</p>
+          <p>Phone:{professor.phone}</p>
+          <p>Department:{professor.departmentId}</p>
           <button onClick={removeProfessor}>Delete Professor</button>
         </div>
         <div className="UpdateProfessor">

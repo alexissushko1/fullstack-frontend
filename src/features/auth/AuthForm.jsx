@@ -63,4 +63,4 @@ function Authform() {
   );
 }
 
-export default AuthForm;
+export default Authform;

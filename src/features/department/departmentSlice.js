@@ -24,12 +24,26 @@ const departmentApi = api.injectEndpoints({
       transformErrorResponse: (response) => response.data.error,
     }),
     addDepartment: build.mutation({
-      query: (department) => ({
+      query: ({
+        name,
+        description,
+        image,
+        departmentEmail,
+        departmentPhone,
+        professorIds,
+      }) => ({
         url: "departments",
         method: "POST",
-        body: department,
+        body: {
+          name,
+          description,
+          image,
+          departmentEmail,
+          departmentPhone,
+          professorIds,
+        },
       }),
-      invalidatesTags: ["Department"],
+      invalidatesTags: [{ type: "Department", id: "LIST" }],
       transformResponse: (response) => response.newDepartment,
       transformErrorResponse: (response) => response.data.error,
     }),

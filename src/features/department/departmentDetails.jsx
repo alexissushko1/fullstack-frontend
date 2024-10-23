@@ -21,11 +21,15 @@ export default function DepartmentDetails(/*{
       console.error("No token found");
       return;
     }
+    if (!department) {
+      console.log("No department found");
+    }
     //setSelectedDepartmentId();
     try {
       await deleteDepartment(id).unwrap();
+      Navigate("/departments");
     } catch (e) {
-      console.error("Failed to delete department:", error);
+      console.error("Failed to delete department:", e);
     }
   };
 

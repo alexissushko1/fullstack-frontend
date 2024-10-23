@@ -4,24 +4,31 @@ import { useAddDepartmentMutation } from "./departmentSlice";
 export default function DepartmentForm({}) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("https://loremflickr.com/200/300/dog");
   const [departmentEmail, setDepartmentEmail] = useState("");
   const [departmentPhone, setDepartmentPhone] = useState("");
+  //const [professorIds, setProfessorIds] = useState("");
 
   const [addDepartment, { isLoading, error }] = useAddDepartmentMutation();
 
-  function postDepartment(event) {
+  const postDepartment = async (event) => {
     event.preventDefault();
-
-    const imageUrl = "https://loremflickr.com/200/300/dog";
-    addDepartment({
+    const departmentData = {
       name,
       description,
       image,
       departmentEmail,
       departmentPhone,
-    });
-  }
+      professorIds: [1, 2, 3],
+    };
+
+    console.log("Posting department data:", departmentData);
+    try {
+      const response = await addDepartment(departmentData).unwrap();
+    } catch (e) {
+      console.error("Failed to add department:", e);
+    }
+  };
 
   return (
     <>
@@ -67,7 +74,8 @@ export default function DepartmentForm({}) {
             onChange={(e) => setDepartmentPhone(e.target.value)}
           />
         </label>
-        <button>Add</button>
+
+        <button type="submit">Add Department</button>
         {isLoading && <output>Uploading department information...</output>}
         {error && <output>{error.message}</output>}
       </form>

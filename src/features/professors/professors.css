@@ -20,3 +20,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.updProfessor {
+  display: flex;
+  flex-direction: column;
+}

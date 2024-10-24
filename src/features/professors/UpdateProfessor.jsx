@@ -57,29 +57,31 @@ const UpdateProfessor = () => {
       }}
     >
       <h2>Update a Professor</h2>
-      <label>
-        Name
-        <input
-          type="text"
-          name="name"
-          defaultValue={professor?.name}
-          required
-        />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" defaultValue={professor?.email} />
-      </label>
-      <label>
-        Department:
-        <input
-          type="int"
-          name="departmentId"
-          defaultValue={professor?.departmentId}
-          required
-        />
-      </label>
-      <button>Update Professor</button>
+      <div className="updProfessor">
+        <label>
+          Name
+          <input
+            type="text"
+            name="name"
+            defaultValue={professor?.name}
+            required
+          />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" defaultValue={professor?.email} />
+        </label>
+        <label>
+          Department:
+          <input
+            type="int"
+            name="departmentId"
+            defaultValue={professor?.departmentId}
+            required
+          />
+        </label>
+        <button>Update Professor</button>
+      </div>
     </form>
   );
 };

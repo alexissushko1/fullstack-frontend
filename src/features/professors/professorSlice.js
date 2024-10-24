@@ -30,7 +30,7 @@ const professorApi = api.injectEndpoints({
     updateProfessor: build.mutation({
       query: ({ professorId, professor }) => ({
         url: professorId ? `/professors/${professorId}/change` : null,
-        method: "POST",
+        method: "PUT",
         body: professor,
       }),
       transformResponse: (response) => response,

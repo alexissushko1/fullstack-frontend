@@ -93,8 +93,8 @@ export default function AddProfessorForm() {
             }
           />
         </label>
-        <button>Add Professor</button>
       </div>
+      <button>Add Professor</button>
     </form>
   );
 }

@@ -80,8 +80,8 @@ const UpdateProfessor = () => {
             required
           />
         </label>
-        <button>Update Professor</button>
       </div>
+      <button>Update Professor</button>
     </form>
   );
 };

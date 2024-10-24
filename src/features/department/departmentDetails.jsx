@@ -65,7 +65,7 @@ export default function DepartmentDetails(/*{
             </button>
           </div>
           <div className="departmentUpdateForm">
-            <UpdateDepartmentForm selectedDepartmentId={selectedDepartmentId} />
+            <UpdateDepartmentForm department={department} />
           </div>
         </div>
       </>

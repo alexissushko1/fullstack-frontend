@@ -1,42 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useUpdateDepartmentMutation } from "./departmentSlice";
 
 export default function UpdateDepartmentForm({ department }) {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(department.name);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("https://loremflickr.com/200/300/dog");
-  const [id, setId] = useState("");
   const [updateDepartment, { isLoading: isUpdating, error: updatingError }] =
     useUpdateDepartmentMutation();
 
-  useEffect(() => {
-    if (department) {
-      setName(department.name || "");
-      setDescription(department.description || "");
-      setImage(department.image || "https://loremflickr.com/200/300/dog");
-      setId(department.id || "");
-    }
-  }, [department]);
-
-  const handleDepartment = async () => {
-    if (!id) {
-      console.error("No department Id provided");
-      return;
-    }
-
-    // Constructing the updated department data
+  const putDepartment = async (event) => {
+    event.preventDefault();
     const updatedDepartmentData = {
-      name: name.trim() === "" ? department.name : name,
-      description:
-        description.trim() === "" ? department.description : description,
-      image: image.trim() === "" ? department.image : image,
+      name,
+      description,
+      image,
     };
 
     console.log("Updating department:", updatedDepartmentData);
 
     try {
       const response = await updateDepartment({
-        id,
+        id: department.id,
         department: updatedDepartmentData,
       }).unwrap();
       console.log("department updated:", response);
@@ -48,12 +32,7 @@ export default function UpdateDepartmentForm({ department }) {
   return (
     <>
       <h2>Update a Department</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleDepartment();
-        }}
-      >
+      <form onSubmit={putDepartment}>
         <label>
           Name
           <input

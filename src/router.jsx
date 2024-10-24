@@ -22,8 +22,6 @@ const router = createBrowserRouter([
       { path: "/auth", element: <AuthForm /> },
       { path: "/departments", element: <DepartmentList /> },
       { path: "/departments/:id", element: <DepartmentDetails /> },
-      { path: "/departments/new", element: <DepartmentForm /> },
-      { path: "/departments/:id/change", element: <UpdateDepartmentForm /> },
       { path: "/users/login", element: <Login /> },
       {
         path: "/professors",

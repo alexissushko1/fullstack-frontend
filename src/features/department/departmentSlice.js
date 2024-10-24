@@ -14,14 +14,12 @@ const departmentApi = api.injectEndpoints({
     getDepartments: build.query({
       query: () => "departments",
       providesTags: ["Department"],
-      transformResponse: (response) => response,
-      transformErrorResponse: (response) => response.data.error,
+      transformErrorResponse: (response) => response.data,
     }),
     getDepartment: build.query({
       query: (id) => "departments/" + id,
       providesTags: ["Department"],
-      transformResponse: (response) => response,
-      transformErrorResponse: (response) => response.data.error,
+      transformErrorResponse: (response) => response.data,
     }),
     addDepartment: build.mutation({
       query: ({
@@ -44,21 +42,16 @@ const departmentApi = api.injectEndpoints({
         },
       }),
       invalidatesTags: ["Department"],
-      transformResponse: (response) => response.newDepartment,
-      transformErrorResponse: (response) => response.data.error,
+      transformErrorResponse: (response) => response.data,
     }),
     updateDepartment: build.mutation({
       query: ({ id, department }) => ({
-        url: id ? `departments/${id}/change` : "",
+        url: `departments/${id}`,
         method: "PUT",
-        body: {
-          department,
-          id,
-        },
+        body: department,
       }),
       invalidatesTags: ["Department"],
-      transformResponse: (response) => response,
-      transformErrorResponse: (response) => response.data.error,
+      transformErrorResponse: (response) => response.data,
     }),
     deleteDepartment: build.mutation({
       query: (id) => ({
@@ -66,7 +59,7 @@ const departmentApi = api.injectEndpoints({
         method: "DELETE",
       }),
       invalidatesTags: ["Department"],
-      transformErrorResponse: (response) => response.data.error,
+      transformErrorResponse: (response) => response.data,
     }),
   }),
 });

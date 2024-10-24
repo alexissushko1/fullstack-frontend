@@ -12,7 +12,10 @@ const professorApi = api.injectEndpoints({
       query: (id) => (id ? `/professors/${id}` : null),
       transformResponse: (response) => response,
       transformErrorResponse: (response) => response.error,
-      providesTags: (result, error, id) => [{ type: "Professor", id }],
+      providesTags: [
+        "Professor",
+        (result, error, id) => [{ type: "Professor", id }],
+      ],
     }),
     addProfessor: build.mutation({
       query: (professor) => ({
@@ -32,7 +35,10 @@ const professorApi = api.injectEndpoints({
       }),
       transformResponse: (response) => response,
       transformErrorResponse: (response) => response.error,
-      invalidatesTags: (result, error, { id }) => [{ type: "Professor", id }],
+      invalidatesTags: [
+        "Professor",
+        (result, error, { id }) => [{ type: "Professor", id }],
+      ],
     }),
     deleteProfessor: build.mutation({
       query: (id) => ({
@@ -40,7 +46,10 @@ const professorApi = api.injectEndpoints({
         method: "DELETE",
       }),
       transformErrorResponse: (response) => response.error,
-      invalidatesTags: (result, error, id) => [{ type: "Professor", id }],
+      invalidatesTags: [
+        "Professor",
+        (result, error, id) => [{ type: "Professor", id }],
+      ],
     }),
   }),
 });

@@ -1,0 +1,27 @@
+.ProfessorGroup {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ProfDetail {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ProfessorDetail {
+  margin: 0.5em;
+}
+
+.ListofProfessors {
+  margin: 0.5rem;
+}
+
+.addProf {
+  display: flex;
+  flex-direction: column;
+}
+
+.updProfessor {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,17 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 import AuthForm from "./features/auth/AuthForm";
 import Root from "./layout/Root";
-import ProfessorList from "./professors/ProfessorList";
-import ProfessorDetails from "./professors/ProfessorDetails";
-import AddProfessorForm from "./professors/AddProfessor";
-import UpdateProfessorForm from "./professors/AddProfessor";
+import ProfessorList from "./features/professors/ProfessorList";
+import ProfessorDetails from "./features/professors/ProfessorDetails";
+import AddProfessorForm from "./features/professors/AddProfessor";
+import UpdateProfessor from "./features/professors/UpdateProfessor";
 import DepartmentList from "./features/department/DepartmentList";
 import DepartmentDetails from "./features/department/DepartmentDetails";
-import DepartmentForm from "./features/department/DepartmentForm";
-import Login from "./features/auth/AuthForm";
-
-import HomePage from "./features/HomePage";
+import DepartmentForm from "./features/department/departmentForm";
 import UpdateDepartmentForm from "./features/department/UpdateDepartmentForm";
+import Login from "./features/auth/AuthForm";
+import HomePage from "./features/HomePage";
 
 const router = createBrowserRouter([
   {
@@ -38,8 +37,8 @@ const router = createBrowserRouter([
         element: <AddProfessorForm />,
       },
       {
-        path: "/professors/change",
-        element: <UpdateProfessorForm />,
+        path: "/professors/:professorId/change",
+        element: <UpdateProfessor />,
       },
     ],
   },

@@ -4,7 +4,7 @@ import Root from "./layout/Root";
 import ProfessorList from "./features/professors/ProfessorList";
 import ProfessorDetails from "./features/professors/ProfessorDetails";
 import AddProfessorForm from "./features/professors/AddProfessor";
-import UpdateProfessorForm from "./features/professors/AddProfessor";
+import UpdateProfessor from "./features/professors/UpdateProfessor";
 import DepartmentList from "./features/department/DepartmentList";
 import DepartmentDetails from "./features/department/DepartmentDetails";
 import DepartmentForm from "./features/department/departmentForm";
@@ -39,8 +39,8 @@ const router = createBrowserRouter([
         element: <AddProfessorForm />,
       },
       {
-        path: "/professors/change",
-        element: <UpdateProfessorForm />,
+        path: "/professors/:professorId/change",
+        element: <UpdateProfessor />,
       },
     ],
   },

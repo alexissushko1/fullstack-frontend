@@ -49,12 +49,15 @@ const departmentApi = api.injectEndpoints({
     }),
     updateDepartment: build.mutation({
       query: ({ id, department }) => ({
-        url: "departments/" + id,
+        url: id ? `departments/${id}/change` : "",
         method: "PUT",
-        body: department,
+        body: {
+          department,
+          id,
+        },
       }),
       invalidatesTags: ["Department"],
-      transformResponse: (response) => response.updatedDepartment,
+      transformResponse: (response) => response,
       transformErrorResponse: (response) => response.data.error,
     }),
     deleteDepartment: build.mutation({

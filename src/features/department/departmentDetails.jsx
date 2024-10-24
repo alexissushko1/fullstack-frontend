@@ -61,11 +61,11 @@ export default function DepartmentDetails(/*{
             <h4>{department.email}</h4>
             <h4>{department.phone}</h4>
             <button onClick={() => removeDepartment(department.id)}>
-              Remove Department
+              Delete Department
             </button>
           </div>
           <div className="departmentUpdateForm">
-            <UpdateDepartmentForm />
+            <UpdateDepartmentForm selectedDepartmentId={selectedDepartmentId} />
           </div>
         </div>
       </>

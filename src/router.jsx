@@ -7,7 +7,7 @@ import AddProfessorForm from "./professors/AddProfessor";
 import UpdateProfessorForm from "./professors/AddProfessor";
 import DepartmentList from "./features/department/DepartmentList";
 import DepartmentDetails from "./features/department/DepartmentDetails";
-import DepartmentForm from "./features/department/DepartmentForm";
+import DepartmentForm from "./features/department/departmentForm";
 import Login from "./features/auth/AuthForm";
 
 import HomePage from "./features/HomePage";
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       { path: "/departments", element: <DepartmentList /> },
       { path: "/departments/:id", element: <DepartmentDetails /> },
       { path: "/departments/new", element: <DepartmentForm /> },
-      { path: "/departments/updated", element: <UpdateDepartmentForm /> },
+      { path: "/departments/:id/change", element: <UpdateDepartmentForm /> },
       { path: "/users/login", element: <Login /> },
       {
         path: "/professors",

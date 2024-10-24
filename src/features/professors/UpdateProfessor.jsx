@@ -1,95 +1,87 @@
-import { useNavigate } from "react-router-dom";
-import { useUpdateProfessorMutation } from "./professorSlice";
-import { useState } from "react";
+import React, { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  useGetProfessorQuery,
+  useUpdateProfessorMutation,
+} from "./professorSlice";
 
-export default function UpdateProfessorForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    bio: "",
-    profileImage: "",
-    email: "",
-    phone: "",
-    departmentId: 0,
-  });
-
+const UpdateProfessor = () => {
+  const { professorId } = useParams();
   const navigate = useNavigate();
+  const {
+    data: professor,
+    error,
+    isLoading,
+  } = useGetProfessorQuery(professorId, {
+    skip: !professorId,
+  });
+  const [updateProfessor, { isSuccess, isError }] =
+    useUpdateProfessorMutation();
+  useEffect(() => {
+    if (isSuccess) {
+      navigate(`/professors/${professorId}`);
+    }
+  }, [isSuccess, navigate, professorId]);
 
-  const [updateProfessor] = useUpdateProfessorMutation();
-  async function changeProfessor(event) {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    if (!professorId) return;
+    const formData = new FormData(e.target);
+    const updatedProfessor = {
+      name: formData.get("name"),
+      bio: formData.get("bio"),
+      profileImage: formData.get("profileImage"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      departmentId: formData.get("departmentId"),
+    };
 
     try {
-      const professor = await updateProfessor({
-        ...formData,
+      await updateProfessor({
+        professorId,
+        professor: updatedProfessor,
       }).unwrap();
-      navigate(`/professors/${professor.id}`);
-    } catch (e) {
-      console.error(e);
+    } catch (err) {
+      console.error("Could not update professors", err);
     }
-  }
+  };
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading professor details</p>;
+  if (isError) return <p>Could not update professors</p>;
 
   return (
-    <form onSubmit={changeProfessor}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit(e);
+      }}
+    >
       <h2>Update a Professor</h2>
       <label>
         Name
         <input
           type="text"
           name="name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        />
-      </label>
-      <label>
-        Bio
-        <input
-          type="text"
-          name="bio"
-          value={formData.bio}
-          onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-        />
-      </label>
-      <label>
-        ProfileImage
-        <input
-          type="text"
-          name="profileImage"
-          value={formData.profileImage}
-          onChange={(e) =>
-            setFormData({ ...formData, profileImage: e.target.value })
-          }
+          defaultValue={professor?.name}
+          required
         />
       </label>
       <label>
         Email
-        <input
-          type="text"
-          name="email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        />
+        <input type="email" name="email" defaultValue={professor?.email} />
       </label>
       <label>
-        Phone
-        <input
-          type="text"
-          name="phone"
-          value={formData.phone}
-          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-        />
-      </label>
-      <label>
-        DepartmentId
+        Department:
         <input
           type="int"
           name="departmentId"
-          value={formData.departmentId}
-          onChange={(e) =>
-            setFormData({ ...formData, departmentId: e.target.value })
-          }
+          defaultValue={professor?.departmentId}
+          required
         />
       </label>
       <button>Update Professor</button>
     </form>
   );
-}
+};
+
+export default UpdateProfessor;

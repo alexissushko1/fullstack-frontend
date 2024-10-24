@@ -9,10 +9,10 @@ const professorApi = api.injectEndpoints({
       providesTags: ["Professor"],
     }),
     getProfessor: build.query({
-      query: (id) => "/professors/" + id,
+      query: (id) => (id ? `/professors/${id}` : null),
       transformResponse: (response) => response,
       transformErrorResponse: (response) => response.error,
-      providesTags: ["Professor"],
+      providesTags: (result, error, id) => [{ type: "Professor", id }],
     }),
     addProfessor: build.mutation({
       query: (professor) => ({
@@ -25,22 +25,22 @@ const professorApi = api.injectEndpoints({
       invalidatesTags: ["Professor"],
     }),
     updateProfessor: build.mutation({
-      query: (id) => ({
-        url: "/professors" + id,
-        method: "PUT",
+      query: ({ professorId, professor }) => ({
+        url: professorId ? `/professors/${professorId}/change` : null,
+        method: "POST",
         body: professor,
       }),
       transformResponse: (response) => response,
       transformErrorResponse: (response) => response.error,
-      invalidatesTags: ["Professor"],
+      invalidatesTags: (result, error, { id }) => [{ type: "Professor", id }],
     }),
     deleteProfessor: build.mutation({
       query: (id) => ({
-        url: "/professors/" + id,
+        url: id ? `/professors/${id}` : null,
         method: "DELETE",
       }),
       transformErrorResponse: (response) => response.error,
-      invalidatesTags: ["Professor"],
+      invalidatesTags: (result, error, id) => [{ type: "Professor", id }],
     }),
   }),
 });
@@ -52,3 +52,5 @@ export const {
   useUpdateProfessorMutation,
   useDeleteProfessorMutation,
 } = professorApi;
+
+export default professorApi;
